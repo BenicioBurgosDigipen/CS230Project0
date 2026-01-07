@@ -132,7 +132,7 @@ static bool SceneSystemInit(void)
 {
 	// Set the starting (Default) scene.
 	// TODO: Change the starting (Default) scene from "Stub" to "Demo":
-	SceneSystemSetNext(StubSceneGetInstance());
+	SceneSystemSetNext(DemoSceneGetInstance());
 
 	return true;
 }
@@ -149,9 +149,17 @@ static void SceneSystemUpdate(float dt)
 		SceneExit(instance.activeScene);
 
 		// TODO: Add support for Load and Unload.
-
-		// Update the active scene.
-		instance.activeScene = instance.nextScene;
+		if (instance.isRestarting)
+		{
+			instance.isRestarting = false;
+		}
+		else
+		{
+			SceneUnload(instance.activeScene);
+			// Update the active scene.
+			instance.activeScene = instance.nextScene;
+			SceneLoad(instance.activeScene);
+		}
 
 		// Initialize the new scene.
 		SceneInit(instance.activeScene);

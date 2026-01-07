@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 //
 // File Name:	StubSystem.h
-// Author(s):	Doug Schilling (dschilling)
+// Author(s):	Benicio Burgos (benicio.burgos)
 // Project:		Project 0
 // Course:		CS230S26
 //
